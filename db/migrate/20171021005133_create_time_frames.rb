@@ -1,7 +1,7 @@
 class CreateTimeFrames < ActiveRecord::Migration[5.1]
   def change
     create_table :time_frames do |t|
-      t.string :day
+      t.integer :day
       t.boolean :is_overnight
       t.string :open
       t.string :closed
