@@ -1,30 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe 'TimeFrams API' do
+RSpec.describe 'TimeFrames API' do
   let!(:bathroom) { create(:bathroom) }
   let!(:time_frames) { create_list(:time_frame, 20, bathroom_id: bathroom.id) }
   let(:bathroom_id) { bathroom.id }
-  let(:time_frame) { time_frames.first.id }
+  let(:id) { time_frames.first.id }
 
   describe 'POST /bathrooms/:bathroom_id/time_frames' do
-    let(:valid_attributes) { { day: 0, open: "2120", closed: "2309" } }
+    let(:valid_attributes) { { day: 0, open: "2120", closed: "2309", is_overnight: true } }
 
     context 'when request attributes are valid' do
-      before { post "/bathrooms/#{bathroom_id}/time_frames" }
+      before { post "/bathrooms/#{bathroom_id}/time_frames", params: valid_attributes }
       it 'returns status code 201' do
-        exopect(response).to have_status_code(201)
+        expect(response).to have_http_status(201)
       end
     end
 
     context 'when an invalid request' do
-      before { post "/bathrooms/#{bathroom_id}/time_frames", params {} }
+      before { post "/bathrooms/#{bathroom_id}/time_frames", params: {} }
 
       it 'retruns status code 422' do
-        exopect(response).to have_status_code(422)
+        expect(response).to have_http_status(422)
       end
 
       it 'returns a failure message' do
-        exopect(response.body).to match(/Validation failed: /)
+        expect(response.body).to match(/Validation failed: /)
       end
     end
   end
@@ -35,11 +35,11 @@ RSpec.describe 'TimeFrams API' do
 
     context 'when time_frame exists' do
       it 'returns status code 204' do
-        expect(response).to have_status_code(204)
+        expect(response).to have_http_status(204)
       end
 
       it 'updates the time frame' do
-        updated_time_frame = TimeFram.find(id)
+        updated_time_frame = TimeFrame.find(id)
         expect(updated_time_frame.open).to eq 2340
       end
     end
@@ -47,11 +47,11 @@ RSpec.describe 'TimeFrams API' do
     context 'when the time frame does not exist' do
       let(:id) { 0 }
       it 'returns status 404' do
-        expect(response).to have_status_code(404)
+        expect(response).to have_http_status(404)
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/Couldn't find TimeFram/)
+        expect(response.body).to match(/Couldn't find TimeFrame/)
       end
     end
   end
@@ -60,7 +60,7 @@ RSpec.describe 'TimeFrams API' do
     before { delete "/bathrooms/#{bathroom_id}/time_frames/#{id}" }
 
     it 'returns status code 204' do
-      expect(response).to have_status_code(204)
+      expect(response).to have_http_status(204)
     end
   end
 end
