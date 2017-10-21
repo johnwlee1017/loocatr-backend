@@ -5,7 +5,7 @@ class CreateTimeFrames < ActiveRecord::Migration[5.1]
       t.boolean :is_overnight
       t.string :open
       t.string :closed
-      t.references :bathroom, foreign_key: true
+      t.integer :bathroom_id, foreign_key: true
 
       t.timestamps
     end
