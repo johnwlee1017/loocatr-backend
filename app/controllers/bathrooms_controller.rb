@@ -14,6 +14,16 @@ class BathroomsController < ApplicationController
     json_response(@bathroom)
   end
 
+  def update
+    @bathroom.update(bathroom_params)
+    head :no_content
+  end
+
+  def destroy
+    @bathroom.destroy
+    head :no_content
+  end
+
   private
   def bathroom_params
     params.permit(:location_name, :latitude, :longitude, :over_21, :handicapped, :family, :customer_only)

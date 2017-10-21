@@ -89,7 +89,7 @@ RSpec.describe 'Bathrooms API', type: :request do
       end
 
       it 'returns status code 204' do
-        expect(resonse).to have_http_status(204)
+        expect(response).to have_http_status(204)
       end
     end
   end
