@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171021020312) do
 
   create_table "bathrooms", force: :cascade do |t|
     t.string "latitude"
-    t.string "longtitude"
+    t.string "longitude"
     t.boolean "over_21"
     t.boolean "handicapped"
     t.boolean "family"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20171021020312) do
   end
 
   create_table "time_frames", force: :cascade do |t|
-    t.string "day"
+    t.integer "day"
     t.boolean "is_overnight"
     t.string "open"
     t.string "closed"

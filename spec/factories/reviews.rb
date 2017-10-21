@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :item do
+  factory :review do
     ratings 5
     description 'Nice bathroom'
   end

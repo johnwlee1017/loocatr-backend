@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :item do
+  factory :image do
     image_url 'http://www.google.com'
   end
 end

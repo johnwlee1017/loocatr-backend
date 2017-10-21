@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :item do
+  factory :bathroom do
     latitude 60
     longitude 50
     over_21 true
