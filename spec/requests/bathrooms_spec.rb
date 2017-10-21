@@ -54,10 +54,26 @@ RSpec.describe 'Bathrooms API', type: :request do
                               customer_only: true
                            }}
     context 'when the request is valid' do
-      before { post '/todos', params: valid_attributes }
+      before { post '/bathrooms', params: valid_attributes }
 
       it 'creates a bathroom' do
-        expect(json[''])
+        expect(json['Library']).to eq('Library')
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+
+    context 'when the request is invalid' do
+      before { post '/bathrooms', params: { location_name: 'Library' }}
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expect(response.body).to match(/Validation failed: /)
       end
     end
   end
