@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Bathrooms API', type: :request do
   let!(:bathrooms) { create_list(:bathroom, 2) }
-  let!(:time_frames) {
-    6.times { |i| create_list(:time_frame, 1, day: i, start: 0001, close: 2358, bathroom_id: bathrooms.first.id)}
+  let!(:time_frames1) {
+    7.times { |i| create_list(:time_frame, 1, day: i, start: '0001', close: '2358', bathroom_id: bathrooms.first.id)}
   }
-  let!(:time_frames) {
-    6.times { |i| create_list(:time_frame, 1, day: i, start: 0100, close: 0111, bathroom_id: bathrooms.last.id)}
+  let!(:time_frames2) {
+    7.times { |i| create_list(:time_frame, 1, day: i, start: '0100', close: '0111', bathroom_id: bathrooms.last.id)}
   }
   let(:bathroom_id) { bathrooms.first.id }
 
