@@ -45,11 +45,11 @@ RSpec.describe 'Bathrooms API', type: :request do
   end
 
   describe 'POST /bathrooms' do
-    let(:valid_attributes) {{ location_name: 'Library'
+    let(:valid_attributes) {{ location_name: 'Library',
                               latitude: 60,
-                              longitude: 50
-                              over_21: true
-                              handicapped: true
+                              longitude: 50,
+                              over_21: true,
+                              handicapped: true,
                               family: true,
                               customer_only: true
                            }}
@@ -57,7 +57,7 @@ RSpec.describe 'Bathrooms API', type: :request do
       before { post '/bathrooms', params: valid_attributes }
 
       it 'creates a bathroom' do
-        expect(json['Library']).to eq('Library')
+        expect(json['location_name']).to eq('Library')
       end
 
       it 'returns status code 201' do
