@@ -77,4 +77,28 @@ RSpec.describe 'Bathrooms API', type: :request do
       end
     end
   end
+
+  describe 'PATCH /bathrooms/:id' do
+    let(:valid_attributes) { { handicapped: false } }
+
+    context 'when the record exists' do
+      before { patch "/bathrooms/#{bathroom_id}" }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'returns status code 204' do
+        expect(resonse).to have_http_status(204)
+      end
+    end
+  end
+
+  describe 'DELETE /bathrooms/:id' do
+    before { delete "/bathrooms/#{bathroom_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
 end
