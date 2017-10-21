@@ -3,8 +3,8 @@ class TimeFramesController < ApplicationController
   before_action :set_time_frame, only: [:update, :destroy]
 
   def create
-    @bathroom.time_frames.create!(time_frame_params)
-    json_response(@bathroom, :created)
+    @time_frame = @bathroom.time_frames.create!(time_frame_params)
+    json_response(@time_frame, :created)
   end
 
   def update
