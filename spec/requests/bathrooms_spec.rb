@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Bathrooms API', type: :request do
   let!(:bathrooms) { create_list(:bathroom, 10) }
-  let(:bathroom_id) { Bathrooms.first.id }
+  let(:bathroom_id) { bathrooms.first.id }
 
   describe 'GET /bathrooms' do
     before { get '/bathrooms' }
@@ -14,6 +14,33 @@ RSpec.describe 'Bathrooms API', type: :request do
 
     it 'returns status code 200' do
       expect(response).to have_http_status(200)
+    end
+  end
+
+  describe 'GET /bathrooms/:id' do
+    before { get "/bathrooms/#{bathroom_id}"}
+
+    context 'when the record exists' do
+      it 'returns the bathroom' do
+        expect(json).not_to be_empty
+        expect(json['id']).to eq(bathroom_id)
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the record does not exist' do
+      let(:bathroom_id) { 100 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Bathroom/)
+      end
     end
   end
 end
