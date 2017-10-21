@@ -33,7 +33,7 @@ RSpec.describe 'TimeFrames API' do
   end
 
   describe 'POST /bathrooms/:bathroom_id/time_frames' do
-    let(:valid_attributes) { { day: 0, open: "2120", closed: "2309", is_overnight: true } }
+    let(:valid_attributes) { { day: 0, open: "2120", close: "2309", is_overnight: true } }
 
     context 'when request attributes are valid' do
       before { post "/bathrooms/#{bathroom_id}/time_frames", params: valid_attributes }
