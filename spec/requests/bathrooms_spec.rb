@@ -6,7 +6,7 @@ RSpec.describe 'Bathrooms API', type: :request do
     7.times { |i| create_list(:time_frame, 1, day: i, start: '0001', close: '2358', bathroom_id: bathrooms.first.id)}
   }
   let!(:time_frames2) {
-    7.times { |i| create_list(:time_frame, 1, day: i, start: '0100', close: '0111', bathroom_id: bathrooms.last.id)}
+    7.times { |i| create_list(:time_frame, 1, day: i, start: '0100', close: '1111', bathroom_id: bathrooms.last.id)}
   }
   let(:bathroom_id) { bathrooms.first.id }
 

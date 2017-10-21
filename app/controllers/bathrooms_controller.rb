@@ -1,7 +1,7 @@
 class BathroomsController < ApplicationController
   before_action :set_bathroom, only: [:show, :update, :destroy]
   def index
-    @bathrooms = Bathroom.all
+    @bathrooms = Bathroom.select { |bathroom| bathroom.opening }
     json_response(@bathrooms)
   end
 
