@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171021020312) do
   create_table "time_frames", force: :cascade do |t|
     t.integer "day"
     t.boolean "is_overnight"
-    t.integer "open"
+    t.integer "start"
     t.integer "close"
     t.integer "bathroom_id"
     t.datetime "created_at", null: false

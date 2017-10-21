@@ -33,7 +33,7 @@ RSpec.describe 'TimeFrames API' do
   end
 
   describe 'POST /bathrooms/:bathroom_id/time_frames' do
-    let(:valid_attributes) { { day: 0, open: "2120", close: "2309", is_overnight: true } }
+    let(:valid_attributes) { { day: 0, start: "2120", close: "2309", is_overnight: true } }
 
     context 'when request attributes are valid' do
       before { post "/bathrooms/#{bathroom_id}/time_frames", params: valid_attributes }
@@ -56,7 +56,7 @@ RSpec.describe 'TimeFrames API' do
   end
 
   describe 'PATCH /bathrooms/:bathroom_id/time_frames/:id' do
-    let(:valid_attributes) { { open: 2340 } }
+    let(:valid_attributes) { { start: 2340 } }
     before { patch "/bathrooms/#{bathroom_id}/time_frames/#{id}", params: valid_attributes }
 
     context 'when time_frame exists' do
@@ -66,7 +66,7 @@ RSpec.describe 'TimeFrames API' do
 
       it 'updates the time frame' do
         updated_time_frame = TimeFrame.find(id)
-        expect(updated_time_frame.open).to eq 2340
+        expect(updated_time_frame.start).to eq 2340
       end
     end
 
