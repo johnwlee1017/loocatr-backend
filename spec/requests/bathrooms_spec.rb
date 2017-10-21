@@ -43,4 +43,22 @@ RSpec.describe 'Bathrooms API', type: :request do
       end
     end
   end
+
+  describe 'POST /bathrooms' do
+    let(:valid_attributes) {{ location_name: 'Library'
+                              latitude: 60,
+                              longitude: 50
+                              over_21: true
+                              handicapped: true
+                              family: true,
+                              customer_only: true
+                           }}
+    context 'when the request is valid' do
+      before { post '/todos', params: valid_attributes }
+
+      it 'creates a bathroom' do
+        expect(json[''])
+      end
+    end
+  end
 end

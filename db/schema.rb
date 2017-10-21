@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171021020312) do
   enable_extension "plpgsql"
 
   create_table "bathrooms", force: :cascade do |t|
+    t.string "location_name"
     t.string "latitude"
     t.string "longitude"
     t.boolean "over_21"
