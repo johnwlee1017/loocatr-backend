@@ -2,6 +2,10 @@ class TimeFramesController < ApplicationController
   before_action :set_bathroom
   before_action :set_time_frame, only: [:update, :destroy]
 
+  def index
+    json_response(@bathroom.time_frames)
+  end
+
   def create
     @time_frame = @bathroom.time_frames.create!(time_frame_params)
     json_response(@time_frame, :created)
@@ -23,7 +27,7 @@ class TimeFramesController < ApplicationController
   end
 
   def set_bathroom
-    @bathroom = Bathroom.find_by(id: params[:bathroom_id])
+    @bathroom = Bathroom.find(params[:bathroom_id])
   end
 
   def set_time_frame
