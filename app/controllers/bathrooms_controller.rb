@@ -1,10 +1,10 @@
 class BathroomsController < ApplicationController
   before_action :set_bathroom, only: [:show, :update, :destroy]
   def index
-    @closer_bathroom = Bathroom.all.select{ |bathroom| DistanceCalculator.distance(params[:lat], params[:lng], bathroom.latitude, bathroom.longitude) < 5 }[0..10]
-    @opening_bathroom = @closer_bathroom.select { |bathroom| bathroom.opening }
-    @sorted_bathroom = @opening_bathroom.sort_by{ |bathroom| DistanceCalculator.distance(params[:lat], params[:lng], bathroom.latitude, bathroom.longitude)}
-    json_response(@sorted_bathroom)
+    @closer_bathrooms = Bathroom.all.select{ |bathroom| DistanceCalculator.distance(params[:lat], params[:lng], bathroom.latitude, bathroom.longitude) < 5 }[0..10]
+    @opening_bathrooms = @closer_bathrooms.select { |bathroom| bathroom.opening }
+    @sorted_bathrooms = @opening_bathrooms.sort_by{ |bathroom| DistanceCalculator.distance(params[:lat], params[:lng], bathroom.latitude, bathroom.longitude)}
+    json_response(@sorted_bathrooms)
   end
 
   def create
