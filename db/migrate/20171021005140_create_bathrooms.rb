@@ -8,7 +8,7 @@ class CreateBathrooms < ActiveRecord::Migration[5.1]
       t.boolean :handicapped
       t.boolean :family
       t.boolean :customer_only
-
+      t.float :average_ratings, default: 0
       t.timestamps
     end
   end

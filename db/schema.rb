@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20171021020312) do
     t.boolean "handicapped"
     t.boolean "family"
     t.boolean "customer_only"
+    t.float "average_ratings", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

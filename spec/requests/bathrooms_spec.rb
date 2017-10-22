@@ -24,12 +24,20 @@ RSpec.describe 'Bathrooms API', type: :request do
   end
 
   describe 'GET /bathrooms/:id' do
+    let(:user) { create(:user) }
+    let!(:reviews) { create_list(:review, 3, bathroom_id: bathrooms.first.id, user_id: user.id) }
     before { get "/bathrooms/#{bathroom_id}"}
 
+
     context 'when the record exists' do
+
       it 'returns the bathroom' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(bathroom_id)
+      end
+
+      it 'has average ratings' do
+        expect(json['average_ratings']).to eq 5.0
       end
 
       it 'returns status code 200' do
