@@ -23,7 +23,7 @@ class TimeFramesController < ApplicationController
 
   private
   def time_frame_params
-    params.permit(:day, :open, :closed)
+    params.permit(:day, :start, :close)
   end
 
   def set_bathroom

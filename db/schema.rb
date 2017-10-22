@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20171021020312) do
 
   create_table "bathrooms", force: :cascade do |t|
     t.string "location_name"
-    t.string "latitude"
-    t.string "longitude"
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
     t.boolean "over_21"
     t.boolean "handicapped"
     t.boolean "family"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20171021020312) do
   create_table "time_frames", force: :cascade do |t|
     t.integer "day"
     t.boolean "is_overnight"
-    t.integer "open"
-    t.integer "closed"
+    t.string "start"
+    t.string "close"
     t.integer "bathroom_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
