@@ -11,7 +11,7 @@ RSpec.describe 'Bathrooms API', type: :request do
   let(:bathroom_id) { bathrooms.first.id }
 
   describe 'GET /bathrooms' do
-    before { get '/bathrooms' }
+    before { get '/bathrooms?lat=37.7845852&lng=-122.39721450000002' }
 
     it 'returns currently opend bathrooms' do
       expect(json).not_to be_empty
