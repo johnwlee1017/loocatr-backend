@@ -6,6 +6,10 @@ corners_store = Bathroom.create(location_name: "Corner's Store", latitude: 37.78
   corners_store.reviews.create(ratings: rand(1..5), description: Faker::Lorem.paragraph, user_id: User.first.id )
 end
 
+corners_store.images.create(image_url: 'http://farm6.static.flickr.com/5009/5643820446_fdd60a4611.jpg')
+corners_store.images.create(image_url: 'http://farm6.static.flickr.com/5109/5643250653_f7553653dd_z.jpg')
+corners_store.images.create(image_url: 'http://img.4travel.jp/img/tcs/t/pict/lrg/15/62/57/lrg_15625763.jpg?20100812110309')
+
 7.times do |i|
   corners_store.time_frames.create(day: i, is_overnight: false, start: '0001', close: '2358')
 end
