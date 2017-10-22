@@ -1,11 +1,8 @@
 class BathroomsController < ApplicationController
   before_action :set_bathroom, only: [:show, :update, :destroy]
   def index
-    @closer_bathrooms = Bathroom.all.select{ |bathroom| DistanceCalculator.distance(params[:lat], params[:lng], bathroom.latitude, bathroom.longitude) < 5 }[0..10]
-    @opening_bathrooms = @closer_bathrooms.select { |bathroom| bathroom.opening }
-    @sorted_bathrooms = @opening_bathrooms.sort_by { |bathroom| DistanceCalculator.distance(params[:lat], params[:lng], bathroom.latitude, bathroom.longitude)}
-    @sorted_bathrooms.map! { |bathroom| bathroom.average_ratings = Review.average_ratings(bathroom) }
-    json_response(@sorted_bathrooms)
+    @closest_available_bathrooms = Bathroom.fetch_bathrooms(params[:lat], params[:lng])
+    json_response(@closest_available_bathrooms)
   end
 
   def create
