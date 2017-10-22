@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :bathroom do
-    latitude 60
-    longitude 50
+    latitude 0.3776871e2
+    longitude -0.12241482e3
     over_21 true
     handicapped true
     family true
