@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @bathroom.reviews.create!(review_params)
+    @review = @bathroom.reviews.create!(review_params)
     json_response(@review, :created)
   end
 
