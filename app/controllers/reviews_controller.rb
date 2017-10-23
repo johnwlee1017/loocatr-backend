@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:update, :destroy]
 
   def index
-    json_response(@bathroom.reviews)
+    json_response(@bathroom.reviews.reverse)
   end
 
   def create
