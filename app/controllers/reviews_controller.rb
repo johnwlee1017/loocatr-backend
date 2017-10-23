@@ -3,11 +3,11 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:update, :destroy]
 
   def index
-    json_response(@bathroom.reviews)
+    json_response(@bathroom.reviews.reverse)
   end
 
   def create
-    @bathroom.reviews.create!(review_params)
+    @review = @bathroom.reviews.create!(review_params)
     json_response(@review, :created)
   end
 
