@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
 
   private
   def image_params
-    params.permit(:image_url, :user_id)
+    params.permit(:image_url)
   end
 
   def set_bathroom
