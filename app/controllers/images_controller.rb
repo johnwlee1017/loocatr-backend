@@ -5,6 +5,16 @@ class ImagesController < ApplicationController
     json_response(@bathroom.images)
   end
 
+  def create
+    @image = @bathroom.images.create!(image_params)
+    json_response(@image, :created)
+  end
+
+  private
+  def image_params
+    params.permit(:image_id, :user_id)
+  end
+
   def set_bathroom
     @bathroom = Bathroom.find(params[:bathroom_id])
   end
