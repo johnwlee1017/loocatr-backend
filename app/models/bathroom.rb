@@ -18,8 +18,9 @@ class Bathroom < ApplicationRecord
 
   def self.fetch_bathrooms(cur_lat, cur_lng)
     # opening_bathrooms = .select { |bathroom| bathroom.opening }[0...10]
-    self.closest_bathrooms(cur_lat, cur_lng)[0..10].each { |bathroom| bathroom.average_ratings = Review.average_ratings(bathroom) || 0 }
-    opening_bathrooms
+    bathrooms = self.closest_bathrooms(cur_lat, cur_lng)[0..10]
+    bathrooms.each { |bathroom| bathroom.average_ratings = Review.average_ratings(bathroom) || 0 }
+    bathrooms
   end
 
   def self.closest_bathrooms(cur_lat, cur_lng)
