@@ -1,9 +1,7 @@
-User.create(username: 'Anson', email: 'hianson@gmail.com', password_digest: 'anson')
-
 corners_store = Bathroom.create(location_name: "Corner's Store", latitude: 37.785546, longitude: -122.396981, over_21: true, handicapped: false, family: false, customer_only: true)
 
 5.times do
-  corners_store.reviews.create(ratings: rand(1..5), description: Faker::Lorem.paragraph, user_id: User.first.id )
+  corners_store.reviews.create(ratings: rand(1..5), description: Faker::Lorem.paragraph, user_id: 'anonymous' )
 end
 
 corners_store.images.create(image_url: 'http://farm6.static.flickr.com/5009/5643820446_fdd60a4611.jpg')
