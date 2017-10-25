@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Bathrooms API', type: :request do
-  let!(:bathrooms) { create_list(:bathroom, 2) }
-  let!(:time_frames1) {
-    7.times { |i| create_list(:time_frame, 1, day: i, start: '0001', close: '2358', bathroom_id: bathrooms.first.id)}
-  }
-  let!(:time_frames2) {
-    7.times { |i| create_list(:time_frame, 1, day: i, start: '0100', close: '1111', bathroom_id: bathrooms.last.id)}
-  }
+  let!(:bathrooms) { create_list(:bathroom, 10) }
+  # let!(:time_frames1) {
+  #   7.times { |i| create_list(:time_frame, 1, day: i, start: '0001', close: '2358', bathroom_id: bathrooms.first.id)}
+  # }
+  # let!(:time_frames2) {
+  #   7.times { |i| create_list(:time_frame, 1, day: i, start: '0100', close: '1111', bathroom_id: bathrooms.last.id)}
+  # }
   let(:bathroom_id) { bathrooms.first.id }
 
   describe 'GET /bathrooms' do
@@ -15,7 +15,7 @@ RSpec.describe 'Bathrooms API', type: :request do
 
     it 'returns currently opend bathrooms' do
       expect(json).not_to be_empty
-      expect(json.size).to eq(1)
+      expect(json.size).to eq(10)
     end
 
     it 'returns status code 200' do

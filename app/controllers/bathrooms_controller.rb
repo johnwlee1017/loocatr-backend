@@ -27,7 +27,7 @@ class BathroomsController < ApplicationController
 
   private
   def bathroom_params
-    params.permit(:location_name, :latitude, :longitude, :over_21, :handicapped, :family, :customer_only)
+    params.permit(:location_name, :latitude, :longitude, :over_21, :handicapped, :family, :customer_only, :is_private ,:user_id )
   end
   def set_bathroom
     @bathroom = Bathroom.find(params[:id])
