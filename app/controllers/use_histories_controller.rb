@@ -2,7 +2,7 @@ class UseHistoriesController < ApplicationController
 
   def create
     @use_history = UseHistory.create!(use_history_params)
-    json_response(@user_history, :created)
+    json_response(@use_history, :created)
   end
 
   private
