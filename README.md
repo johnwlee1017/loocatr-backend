@@ -69,10 +69,10 @@ https://github.com/aminebenkeroum/toggle-switch-react-native
 
 ## Contributors
 
-Cortney Scott
-Kanji Yomoda
-John Lee
-Anson Leung
+Cortney Scott,
+Kanji Yomoda,
+John Lee,
+Anson Leung,
 
 ## License
 
