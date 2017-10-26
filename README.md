@@ -72,7 +72,7 @@ https://github.com/aminebenkeroum/toggle-switch-react-native
 Cortney Scott,
 Kanji Yomoda,
 John Lee,
-Anson Leung,
+Anson Leung
 
 ## License
 
