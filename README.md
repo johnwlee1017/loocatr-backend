@@ -1,4 +1,4 @@
-# Loocatr-frontend
+# Loocatr-backend
 
 <p align="center">
   <img width="300" alt="homescreen" src="https://user-images.githubusercontent.com/29417990/32300389-81fd518e-bf16-11e7-8064-de17d731e099.png">
